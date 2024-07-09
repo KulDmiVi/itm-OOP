@@ -75,9 +75,8 @@ if __name__ == "__main__":
     first_moped = Moped('green', 'karpatii')
     print(first_moped.public_var)
     print(first_moped._protected_var)
+
     try:
         print(first_moped.__private_var)
-    except:
-        print(first_moped.__dict__)
-        print(first_moped._Moped__private_var)
-        print("Ошбка доступа к пртиватным атрибутам")
+    except AttributeError as e:
+        print(f"Ошбка доступа к пртиватным атрибутам\n {e}")
