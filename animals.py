@@ -1,9 +1,8 @@
-import abc
-from abc import ABC
+from abc import ABC, abstractmethod
 
 
-class Animals(abc.ABC):
-    @abc.abstractmethod
+class Animals(ABC):
+    @abstractmethod
     def voice(self): pass
 
 
@@ -19,5 +18,4 @@ class Cat(Animals):
 
 
 if __name__ == "__main__":
-
     Cat.voice()
