@@ -4,9 +4,10 @@ class Dog:
     def __new__(cls, *args, **kwargs):
         if cls.__instance is None:
             cls.__instance = super(Dog, cls).__new__(cls)
+            cls.__instance.init_data(*args)
         return cls.__instance
 
-    def __init__(self, name):
+    def init_data(self, name):
         self.name = name
 
     def get_name(self):
