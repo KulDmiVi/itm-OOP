@@ -37,10 +37,23 @@ class Car(MeansOfTransport):
     car_drive = 4
 
     def __init__(self, color: str, brand: str, wheel_count=4):
-        self.__color = color
-        self.__brand = brand
-        self.__wheel_count = wheel_count
+        self.color = color
+        self.brand = brand
+        self.wheel_count = wheel_count
         self.show_car_drive()
+
+    def __call__(self):
+        print("бип бип")
+
+
+    def __add__(self, other):
+        if not isinstance(other, Car):
+            raise ArithmeticError("Правый операнд должен быть Машиной)")
+
+        return Car(self.color+other.color, self.brand+other.brand, self.wheel_count+other.wheel_count)
+
+    def __str__(self):
+        return f"Марка {self.brand} Цвет {self.color}"
 
     @classmethod
     def show_car_drive(cls):
@@ -67,6 +80,7 @@ if __name__ == "__main__":
     first_car.color = 5
     first_car.color = 'black'
 
+
     first_car.brand = 1.3
     first_car.brand = 'lada'
     print(first_car.color, first_car.brand)
@@ -80,3 +94,8 @@ if __name__ == "__main__":
         print(first_moped.__private_var)
     except AttributeError as e:
         print(f"Ошбка доступа к пртиватным атрибутам\n {e}")
+    test_car = Car("баклажан", "жигули", 4)
+    second_car()
+    newc = test_car + second_car
+    print(newc)
+    print(second_car)
